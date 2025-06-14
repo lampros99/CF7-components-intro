@@ -12,7 +12,7 @@ import Layout from "./components/Layout.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 
 // import CounterWithCustomHook from "./components/CounterWithCustomHook.tsx";
-// import NameChanger from "./components/nameChanger.tsx";
+import NameChanger from "./components/NameChanger.tsx";
 // import CounterWithMoreState from "./components/counterWithMoreState.tsx";
 import Todo from "./components/Todo/Todo.tsx";
 
@@ -35,7 +35,7 @@ function App() {
      {/* <ClassComponentWithState/> */}
      {/* <h1 className="text-center text-2xl font-bold">this is a heading 1</h1> */}
       {/* <FunctionalComponent/>  */}
-      {/* <NameChanger></NameChanger> */}
+      <NameChanger></NameChanger>
       {/* <CounterAdvanded/> */}
       {/* <CounterWithCustomHook/> */}
       {/* <CounterWithReducer/>
