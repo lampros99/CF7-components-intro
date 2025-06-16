@@ -13,6 +13,7 @@ import Layout from "./components/Layout.tsx";
 
 // import CounterWithCustomHook from "./components/CounterWithCustomHook.tsx";
 import NameChanger from "./components/NameChanger.tsx";
+import OnlineStatus from "./components/OnlineStatus.tsx";
 // import CounterWithMoreState from "./components/counterWithMoreState.tsx";
 // import Todo from "./components/Todo/Todo.tsx";
 
@@ -43,6 +44,8 @@ function App() {
       {/* <CounterWithMoreState></CounterWithMoreState> */}
       
       {/* <Todo/> */}
+
+      <OnlineStatus><div className=""></div></OnlineStatus>
       
      </Layout>
     </>
