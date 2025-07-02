@@ -7,13 +7,16 @@
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 // import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
 import Layout from "./components/Layout.tsx";
+import { BrowserRouter, Routes, Route } from "react-router";
+import HomePage from "./pages/HomePage.tsx";
+import NameChangerPage from "./pages/NameChangerPage.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 
 // import CounterWithCustomHook from "./components/CounterWithCustomHook.tsx";
-import NameChanger from "./components/NameChanger.tsx";
-import OnlineStatus from "./components/OnlineStatus.tsx";
+// import NameChanger from "./components/NameChanger.tsx";
+// import OnlineStatus from "./components/OnlineStatus.tsx";
 // import CounterWithMoreState from "./components/counterWithMoreState.tsx";
 // import Todo from "./components/Todo/Todo.tsx";
 
@@ -36,7 +39,7 @@ function App() {
      {/* <ClassComponentWithState/> */}
      {/* <h1 className="text-center text-2xl font-bold">this is a heading 1</h1> */}
       {/* <FunctionalComponent/>  */}
-      <NameChanger></NameChanger>
+      {/* <NameChanger></NameChanger> */}
       {/* <CounterAdvanded/> */}
       {/* <CounterWithCustomHook/> */}
       {/* <CounterWithReducer/>
@@ -45,7 +48,14 @@ function App() {
       
       {/* <Todo/> */}
 
-      <OnlineStatus></OnlineStatus>
+      {/* <OnlineStatus></OnlineStatus> */}
+
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+          <Route path="name-changer" element={<NameChangerPage/>}/>
+      </Routes>
+      </BrowserRouter>
       
      </Layout>
     </>
