@@ -45,7 +45,7 @@ function App() {
       
       {/* <Todo/> */}
 
-      <OnlineStatus><div className=""></div></OnlineStatus>
+      <OnlineStatus></OnlineStatus>
       
      </Layout>
     </>
