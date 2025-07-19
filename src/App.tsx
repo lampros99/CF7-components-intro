@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
+import UserPage from "./pages/UserPage.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -61,12 +62,16 @@ function App() {
         <Route path="example/name-changer" element={<NameChangerPage/>}/>
         <Route path="example/online-status" element={<OnlineStatusPage/>}/>
 
-        <Route path="examples">
+        <Route path="examples?">
           <Route path="name-changer" element={<NameChangerPage/>}>
           <Route path="online-status" element={<OnlineStatusPage/>}/>
 
           </Route>
         </Route>
+
+        <Route path="users/:userId" element={<UserPage />}/>
+        example.com/users/12 
+        example.com/users?id=12
 
 
       </Routes>
