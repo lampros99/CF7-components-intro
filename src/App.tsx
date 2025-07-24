@@ -17,6 +17,7 @@ import ExamplesPage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import AutoRedirect from "./components/AutoRedirect.tsx";
 import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -47,12 +48,12 @@ function App() {
           </Route>
           </Route>
 
-          <Route path="users">
-            <Route index element={<UserPage />} />
-            <Route path=":userId" element={<UserPage />} />
-          </Route>
+          <Route path="users/:usersId" element={<UserPage />}>
+            <Route path="users" element={<UserPage />} />
+            
         </Route>
-
+        </Route>
+          <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
