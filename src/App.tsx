@@ -15,6 +15,8 @@ import UserPage from "./pages/UserPage.tsx";
 import RouterLayout from "./components/RouterLayout.tsx";
 import ExamplesPage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
+// import AutoRedirect from "./components/AutoRedirect.tsx";
+import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -41,6 +43,7 @@ function App() {
           <Route index element={<ExamplesPage />}/>
             <Route path="name-changer" element={<NameChangerPage />} />
             <Route path="online-status" element={<OnlineStatusPage />} />
+            <Route path="auto-redirect" element={<AutoRedirectPage />} />
           </Route>
           </Route>
 
