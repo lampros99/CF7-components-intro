@@ -6,12 +6,15 @@
 // import FunctionalComponent from "./components/FunctionalComponent.tsx";
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 // import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
-import Layout from "./components/Layout.tsx";
-import { BrowserRouter, Routes, Route } from "react-router";
+// import Layout from "./components/Layout.tsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
+import RouterLayout from "./components/RouterLayout.tsx";
+import ExamplesPage from "./pages/ExamplesPage.tsx";
+import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -23,65 +26,33 @@ import UserPage from "./pages/UserPage.tsx";
 // import Todo from "./components/Todo/Todo.tsx";
 
 function App() {
-   
+
   return (
-    <> 
-
-
-    {/* <ClassComponent />
-    <FunctionalComponent />
-    <ArrowFunctionComponent />
-    <ArrowFunctionalComponentWithProps title={"Is a Arrow Functional Component with Props!"} />
-    <ArrowFunctionalComponentsWithPropsType
-     title={"Hello"} discription={"World"}/> */}
-
-     {/* <FunctionalComponentWithState /> */}
-
-     {/* <ClassComponentWithState/> */}
-     {/* <h1 className="text-center text-2xl font-bold">this is a heading 1</h1> */}
-      {/* <FunctionalComponent/>  */}
-      {/* <NameChanger></NameChanger> */}
-      {/* <CounterAdvanded/> */}
-      {/* <CounterWithCustomHook/> */}
-      {/* <CounterWithReducer/>
-      <Counter/> */}
-      {/* <CounterWithMoreState></CounterWithMoreState> */}
-      
-      {/* <Todo/> */}
-
-      {/* <OnlineStatus></OnlineStatus> */}
-
-      <BrowserRouter>
-      <Layout>
-
+    <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<HomePage />}> */}
 
-        <Route index element={<HomePage/>}/>
+        <Route element={<RouterLayout />}>
+          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route index element={<HomePage/>}/>
+        <Route/>
 
-        <Route path="example/name-changer" element={<NameChangerPage/>}/>
-        <Route path="example/online-status" element={<OnlineStatusPage/>}/>
+         <Route path="examples?">
+          <Route path="examples" element={<RouterExamplesLayout />}>
+          <Route index element={<ExamplesPage />}/>
+            <Route path="name-changer" element={<NameChangerPage />} />
+            <Route path="online-status" element={<OnlineStatusPage />} />
+          </Route>
+          </Route>
 
-        <Route path="examples?">
-          <Route path="name-changer" element={<NameChangerPage/>}>
-          <Route path="online-status" element={<OnlineStatusPage/>}/>
-
+          <Route path="users">
+            <Route index element={<UserPage />} />
+            <Route path=":userId" element={<UserPage />} />
           </Route>
         </Route>
 
-        <Route path="users/:userId" element={<UserPage />}/>
-        example.com/users/12 
-        example.com/users?id=12
-
-
       </Routes>
-      
-      </Layout>
-      </BrowserRouter>
-      
-    
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

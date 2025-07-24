@@ -3,12 +3,13 @@ import { useParams } from "react-router";
 
 
 const UserPage = () => {
+    const {userId} = useParams();
 
-    const { userId } = useParams();
+
 
     useEffect(() => {
      document.title = `CF7 User id: ${ userId }`;
-}, [userId])
+    }, [userId])
     return(
         <>
         <h1>user with id: ${}</h1>
@@ -17,6 +18,5 @@ const UserPage = () => {
 
     )
 }
-
 
 export default UserPage;
