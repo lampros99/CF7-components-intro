@@ -13,7 +13,7 @@ const AutoRedirect = () => {
 
         // Cleanup the timer on component unmount
         return () => clearTimeout(timer);
-    }, []);
+    }, [navigate]);
 
     return (
         <>

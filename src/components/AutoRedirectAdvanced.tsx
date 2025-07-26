@@ -21,7 +21,7 @@ const AutoRedirect = () => {
             clearInterval(intervalId);
             clearTimeout(timer);
     };
-    }, []);
+    }, [navigate]);
 
     return (
         <>

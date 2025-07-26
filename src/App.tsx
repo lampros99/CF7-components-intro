@@ -8,7 +8,7 @@
 // import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
 // import Layout from "./components/Layout.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage.tsx";
+// import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
@@ -18,6 +18,7 @@ import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import AutoRedirect from "./components/AutoRedirect.tsx";
 import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import FocusInput from "./components/FocusInput.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -36,7 +37,7 @@ function App() {
 
         <Route element={<RouterLayout />}>
           {/* <Route path="/" element={<HomePage />} /> */}
-          <Route index element={<HomePage/>}/>
+          <Route index element={<FocusInput/>}/>
         <Route/>
 
          <Route path="examples?">
@@ -50,9 +51,9 @@ function App() {
 
           <Route path="users/:usersId" element={<UserPage />}>
             <Route path="users" element={<UserPage />} />
-            
         </Route>
         </Route>
+        
           <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
