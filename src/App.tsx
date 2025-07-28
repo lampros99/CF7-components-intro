@@ -20,6 +20,7 @@ import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 // import FocusInput from "./components/FocusInput.tsx";
 import UncontrollerInput from "./components/UncontrollerInput.tsx";
+import MultiFieldForm from "./components/MultiFieldForm.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -37,6 +38,7 @@ function App() {
       <Routes>
 
         <Route element={<RouterLayout />}>
+        <Route index element={<MultiFieldForm />} />
           {/* <Route path="/" element={<HomePage />} /> */}
           {/* <Route index element={<FocusInput/>}/> */}
           <Route index element={<UncontrollerInput/>}/>
