@@ -18,7 +18,8 @@ import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import AutoRedirect from "./components/AutoRedirect.tsx";
 import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
-import FocusInput from "./components/FocusInput.tsx";
+// import FocusInput from "./components/FocusInput.tsx";
+import UncontrollerInput from "./components/UncontrollerInput.tsx";
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -37,7 +38,8 @@ function App() {
 
         <Route element={<RouterLayout />}>
           {/* <Route path="/" element={<HomePage />} /> */}
-          <Route index element={<FocusInput/>}/>
+          {/* <Route index element={<FocusInput/>}/> */}
+          <Route index element={<UncontrollerInput/>}/>
         <Route/>
 
          <Route path="examples?">
