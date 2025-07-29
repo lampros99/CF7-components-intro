@@ -15,10 +15,12 @@ const initialValues = {
 const MultiFieldForm = () => {
 
     const [values, setValues] = useState<FormValues>(initialValues);
+    const [submitted, setSubmittedData] = useState<FormValues | null>(null);
 
 
     const handleSubmit = (e:React.FormEvent) => {
         e.preventDefault();
+        setSubmittedData(values);
         console.log("Form submitted with values:", values);
         setValues(initialValues);
 
@@ -38,7 +40,8 @@ const MultiFieldForm = () => {
 
     const handleClear = () => {
          setValues(initialValues);
-
+         setSubmittedData(null);
+         console.log("Form cleared");
     }
 
 
@@ -74,27 +77,31 @@ const MultiFieldForm = () => {
                 required
                 ></textarea>
 
-                <div className="bg-gray-100 p-4 rounded-md mb-4">
+                <div className="bg-gray-100 p-4 rounded-md  mb-5">
 
                 <button
                     type="submit"
-                    onClick={handleSubmit}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300 mb-4"
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300 mr-5"
                 >
                     submit
                 </button>
                 <button
                     type="button"
                     onClick={handleClear}
-                    className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 transition-colors duration-300"
+                    className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 transition-colors duration-300 mb-10"
                 >
                     clear
                 </button>
-
                 </div>
 
-                
-                  
+                {submitted && (
+                    <div className="bg-green-100 p-4 rounded-md mb-5">
+                        <h3 className="text-lg font-semibold">Form Submitted Successfully!</h3>
+                        <p><strong>Name:</strong> {submitted.name}</p>
+                        <p><strong>Email:</strong> {submitted.email}</p>
+                        <p><strong>Message:</strong> {submitted.message}</p>
+                    </div>
+                )}
             </form>
 
         </>
