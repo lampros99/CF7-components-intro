@@ -50,6 +50,7 @@ const MultiFieldFormWithZodValidation = () => {
         // {success: false, error: zodError} = result;
 
         if (!result.success) {
+            console.log(result.error.issues);
             const newErrors: FormErrors = {};
 
             result.error.issues.forEach((issue) => {
