@@ -1,9 +1,16 @@
 import { useState } from "react";
 
+
 type FormValues = {
     name: string;
     email: string;
     message: string;
+}
+
+type FormErrors = {
+    name?: string;
+    email?: string;
+    message?: string;
 }
 
 const initialValues = {
@@ -12,17 +19,54 @@ const initialValues = {
     message: ""
 }
 
-const MultiFieldForm = () => {
+const MultiFieldFormWithValidation = () => {
 
     const [values, setValues] = useState<FormValues>(initialValues);
     const [submitted, setSubmittedData] = useState<FormValues | null>(null);
+    const [errors, setErrors] = useState<FormErrors | null>(null);
+
+    const validationForm = (values: FormValues): FormErrors => {
+        const errors: FormErrors = {};
+
+        if (!values.name.trim()) {
+            errors.name = "Name is required";
+        }
+
+        if (!values.email.trim()) {
+            errors.email = "Email is required";
+        } else if (!/^[a-zA-Z0-9][a-zA-Z0-9._%+\\-]{0,63}@[a-zA-Z0-9.\\-]+\.[a-zA-Z]{2,30}$/.test(values.email)) {
+            errors.email = "Email is invalid";
+        }
+
+        if (!values.message.trim()) {
+            errors.message = "Message is required";
+        } else if (values.message.length > 200) {
+            errors.message = "Message cannot exceed 500 characters";
+        }
+
+        return errors;
+
+    }
 
 
     const handleSubmit = (e:React.FormEvent) => {
         e.preventDefault();
+
+        const validationErrors = validationForm(values);
+
+        if(Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            setSubmittedData(null);
+            console.error("Validation errors:", validationErrors);
+            console.log("Validation errors:", validationErrors);
+            return;
+        }
+
+
         setSubmittedData(values);
-        console.log("Form submitted with values:", values);
         setValues(initialValues);
+        setErrors(null);
+        console.log("Form submitted with values:", values);
 
     }
 
@@ -32,14 +76,19 @@ const MultiFieldForm = () => {
         (prev) => ({
             ...prev,
             [name]: value
-        })
-        )
+        }));         
 
+        setErrors(
+            prev => ({
+                ...prev,
+                [name]: undefined,
+            }));
     };
 
 
     const handleClear = () => {
          setValues(initialValues);
+         setErrors(null);
          setSubmittedData(null);
          console.log("Form cleared");
     }
@@ -50,6 +99,7 @@ const MultiFieldForm = () => {
         <>
            
             <form onSubmit={handleSubmit} className="flex flex-col max-w-md mx-auto mt-10">
+            <div>
                <input 
                type="text"
                value={values.name}
@@ -59,24 +109,38 @@ const MultiFieldForm = () => {
                className="px-4 py-2 border border-gray-300 rounded-md mb-4"
                required
                 />
+                {errors?.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                </div>
+
+                <div>
                 <input 
-               type="email"
+               type="text"
                value={values.email}
                name="email"
                placeholder="Enter your email"
                onChange={handleChange}
                className="px-4 py-2 border border-gray-300 rounded-md mb-4"
                required
-                />
+                /> 
+                {errors?.email && (
+                <p className="text-red-500 text-sm">{errors.email}
+                </p> )}
+                 </div>
+
+                 <div>
                 <textarea
                 placeholder="type your message"
                 value={values.message}
                 className="px-4 py-2 border border-gray-300 rounded-md mb-4"
                 name="message"
                 onChange={handleChange}
-                maxLength={500}
+                maxLength={200}
                 required
                 ></textarea>
+                {errors?.message && (
+                <p className="text-red-500 text-sm">{errors.message}
+                </p> )}
+                </div>
 
                 <div className="bg-gray-100 p-4 rounded-md  mb-5">
 
@@ -111,4 +175,4 @@ const MultiFieldForm = () => {
 }
 
 
-export default MultiFieldForm;
+export default MultiFieldFormWithValidation;
