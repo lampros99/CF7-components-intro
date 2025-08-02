@@ -11,7 +11,12 @@ const formSchema = z.object(
         .nonempty("Email is required")
         .regex(/^[a-zA-Z0-9][a-zA-Z0-9._%+\\-]{0,63}@[a-zA-Z0-9.\\-]+\.[a-zA-Z]{2,30}$/, "Email is invalid")
         .email("Email is invalid"),
-        message: z.string().trim().nonempty().min(1, "Message is required").max(50, "Message cannot exceed 50 characters"),
+        message: 
+        z.string()
+        .trim()
+        .nonempty()
+        .min(1, "Message is required")
+        .max(50, "Message cannot exceed 50 characters"),
     }
 )
     
@@ -41,7 +46,7 @@ const MultiFieldFormWithZodValidation = () => {
 
     const [values, setValues] = useState<FormValues>(initialValues);
     const [submitted, setSubmittedData] = useState<FormValues | null>(null);
-    const [errors, setErrors] = useState<FormErrors | null>(null);
+    const [errors, setErrors] = useState<FormErrors>({});
 
     const validationForm = () => {
 
@@ -50,11 +55,11 @@ const MultiFieldFormWithZodValidation = () => {
         // {success: false, error: zodError} = result;
 
         if (!result.success) {
-            console.log(result.error.issues);
             const newErrors: FormErrors = {};
+            console.log(result.error.issues);
 
             result.error.issues.forEach((issue) => {
-                const filedName = issue.path[0] as keyof FormErrors;
+                const filedName = issue.path[0] as keyof FormValues;
                 newErrors[filedName] = issue.message;
             });
 
@@ -107,7 +112,7 @@ const MultiFieldFormWithZodValidation = () => {
     return (
         <>
            
-            <form onSubmit={handleSubmit} className="flex flex-col max-w-md mx-auto mt-10">
+            <form onSubmit={handleSubmit} className="flex flex-col max-w-md mx-auto mt-10 p-6 bg-white shadow-md">
             <div>
                <input 
                type="text"
@@ -115,8 +120,7 @@ const MultiFieldFormWithZodValidation = () => {
                name="name"
                placeholder="Enter your name"
                onChange={handleChange}
-               className="px-4 py-2 border border-gray-300 rounded-md mb-4"
-               required
+               className="px-4 py-2 w-full border border-gray-300 mb-2 rounded-md"
                 />
                 {errors?.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                 </div>
@@ -128,9 +132,8 @@ const MultiFieldFormWithZodValidation = () => {
                name="email"
                placeholder="Enter your email"
                onChange={handleChange}
-               className="px-4 py-2 border border-gray-300 rounded-md mb-4"
+               className="px-4 py-2 w-full border border-gray-300 rounded-md mb-2"
                autoComplete="off"
-               required
                 /> 
                 {errors?.email && (
                 <p className="text-red-500 text-sm">{errors.email}
@@ -141,11 +144,10 @@ const MultiFieldFormWithZodValidation = () => {
                 <textarea
                 placeholder="type your message"
                 value={values.message}
-                className="px-4 py-2 border border-gray-300 rounded-md mb-4"
+                className="px-10 py-3 w-full border border-gray-300 rounded-md mb-1"
                 name="message"
                 onChange={handleChange}
                 maxLength={200}
-                required
                 ></textarea>
                 {errors?.message && (
                 <p className="text-red-500 text-sm">{errors.message}
@@ -163,7 +165,7 @@ const MultiFieldFormWithZodValidation = () => {
                 <button
                     type="button"
                     onClick={handleClear}
-                    className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 transition-colors duration-300 mb-10"
+                    className="px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400 transition-colors duration-300 mb-10"
                 >
                     clear
                 </button>
