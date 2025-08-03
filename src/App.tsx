@@ -36,6 +36,43 @@ import MultiFieldFormWithReactHook from "./components/MultiFieldFormWithReactHoo
 
 function App() {
 
+
+//   const url: string = "/api/v1/products";
+
+//   fetch(url, {
+//     method: "POST",
+//     headers: {'Content-Type': 'application/json'},
+//     body: JSON.stringify(payload),
+//   }
+// )
+// .then(res => {
+//   if (!res.ok) throw new Error(res.statusText);
+//   return res.json();
+// } 
+// )
+// .then(data => {})
+// .catch(err => {});
+
+
+// async function fetchData(url, method = "GET", payload = null) {
+//   try {
+//     const options = {
+//       method,
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+
+//       if (payload) options.body = JSON.stringify(payload);
+//       const res = await fetch(url, options)
+//       if (!res.ok) throw new Error(res.statusText);
+ 
+
+  
+// }catch (err){
+//     console.error("Error fetching data:", err); 
+// }
+  
+
+
   return (
     <BrowserRouter>
       <Routes>

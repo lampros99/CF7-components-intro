@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Button } from "./ui/button";
 
 
 const formSchema = z.object(
@@ -113,6 +114,8 @@ const MultiFieldFormWithReactHook = () => {
                 >
                     clear
                 </button>
+                <div><Button>Click me</Button></div>
+                
                 </div>
                    </form>
                     <div className="bg-green-100 p-4 rounded-md mb-5 items-center text-center">
