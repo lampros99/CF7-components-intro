@@ -9,21 +9,23 @@
 // import Layout from "./components/Layout.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import HomePage from "./pages/HomePage.tsx";
-import NameChangerPage from "./pages/NameChangerPage.tsx";
-import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
-import UserPage from "./pages/UserPage.tsx";
+// import NameChangerPage from "./pages/NameChangerPage.tsx";
+// import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
+// import UserPage from "./pages/UserPage.tsx";
 import RouterLayout from "./components/RouterLayout.tsx";
-import ExamplesPage from "./pages/ExamplesPage.tsx";
-import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
+// import ExamplesPage from "./pages/ExamplesPage.tsx";
+// import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import AutoRedirect from "./components/AutoRedirect.tsx";
-import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
-import NotFoundPage from "./pages/NotFoundPage.tsx";
+// import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
+// import NotFoundPage from "./pages/NotFoundPage.tsx";
 // import FocusInput from "./components/FocusInput.tsx";
-import UncontrollerInput from "./components/UncontrollerInput.tsx";
+// import UncontrollerInput from "./components/UncontrollerInput.tsx";
 // import MultiFieldForm from "./components/MultiFieldForm.tsx";
 // import MultiFieldFormWithValidation from "./components/MultiFieldFormWithValidation.tsx";
 // import MultiFieldFormWithZodValidation from "./components/MultiFieldFormWithZodValidation.tsx";
-import MultiFieldFormWithReactHook from "./components/MultiFieldFormWithReactHook.tsx";
+// import MultiFieldFormWithReactHook from "./components/MultiFieldFormWithReactHook.tsx";
+import ProductList from "./pages/ProductList.tsx";
+
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
@@ -33,6 +35,7 @@ import MultiFieldFormWithReactHook from "./components/MultiFieldFormWithReactHoo
 // import OnlineStatus from "./components/OnlineStatus.tsx";
 // import CounterWithMoreState from "./components/counterWithMoreState.tsx";
 // import Todo from "./components/Todo/Todo.tsx";
+
 
 function App() {
 
@@ -77,11 +80,11 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route element={<RouterLayout />}>
-        <Route index element={<MultiFieldFormWithReactHook />} />
+         {/* <Route element={<RouterLayout />}>
+        <Route index element={<MultiFieldFormWithReactHook />} /> */}
           {/* <Route path="/" element={<HomePage />} /> */}
           {/* <Route index element={<FocusInput/>}/> */}
-          <Route index element={<UncontrollerInput/>}/>
+          {/* <Route index element={<UncontrollerInput/>}/>
         <Route/>
 
          <Route path="examples?">
@@ -98,7 +101,14 @@ function App() {
         </Route>
         </Route>
         
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />  */}
+
+       <Route path="products" element={<RouterLayout />}>
+              <Route index element={<ProductList />}/>
+              {/* <Route path="new" element={<Product/>}/>
+              <Route path=":productId" element={<Product/>}/> */}
+            </Route>
+
       </Routes>
     </BrowserRouter>
   );
