@@ -39,7 +39,7 @@ export type Product = {
   category_id?: number,
 }
 
-export async function getProducts(): Promise<ProductType[]> {
+export async function getProducts(): Promise<Product[]> {
   const res = await fetch(`${API_URL}tenants/${TENANT_ID}/products/`);
   if (!res.ok) throw new Error("Failed to fetch products.");
   const data = await res.json();

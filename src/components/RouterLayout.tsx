@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import Footer from "./Footer";
 // import Header from "./Header";
 import HeaderResponsive from "./HeaderResponsive";
+import { Toaster } from "sonner";
 
 
 const RouterLayout = () => {
@@ -12,7 +13,7 @@ const RouterLayout = () => {
         <Outlet></Outlet>
         </div>
         <Footer />
- 
+        <Toaster richColors />
         </>
     )
 }
