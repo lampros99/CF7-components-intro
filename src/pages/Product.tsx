@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useForm } from "react-hook-form";
@@ -33,7 +32,7 @@ const ProductEdit = ({ mode }: ProductModeProps) => {
     watch,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<Omit<ProductType, "id">>({
+  } = useForm({
     resolver: zodResolver(productFormSchema),
     defaultValues: {
       name: "",
@@ -98,6 +97,7 @@ return (
       <h1 className="text-xl font-bold mb-4">
         {isEdit ? "Edit Product" : "Create New Product"}
       </h1>
+
       <div>
         <Label htmlFor="name">Name</Label>
         <Input id="name" {...register("name")} />
@@ -105,6 +105,7 @@ return (
           <div className="text-cf-dark-red text-sm">{errors.name.message}</div>
         )}
       </div>
+
       <div>
         <Label className="mb-1" htmlFor="slug">
           Slug
@@ -114,6 +115,7 @@ return (
           <div className="text-cf-dark-red text-sm">{errors.slug.message}</div>
         )}
       </div>
+      
       <div>
         <Label className="mb-1" htmlFor="description">
           Description
@@ -125,6 +127,7 @@ return (
           </div>
         )}
       </div>
+      
       <div>
         <Label className="mb-1" htmlFor="image">
           Image URL
@@ -134,6 +137,7 @@ return (
           <div className="text-cf-dark-red text-sm">{errors.image.message}</div>
         )}
       </div>
+
       <div>
         <Label className="mb-1" htmlFor="price">
           Price (€)
@@ -148,6 +152,7 @@ return (
           <div className="text-cf-dark-red text-sm">{errors.price.message}</div>
         )}
       </div>
+
       <div>
         <Label className="mb-1" htmlFor="sort">
           Sort Order
@@ -161,6 +166,7 @@ return (
           <div className="text-cf-dark-red text-sm">{errors.sort.message}</div>
         )}
       </div>
+
       <div className="flex items-center space-x-2">
         <Switch
           id="is_active"
@@ -169,6 +175,7 @@ return (
         />
         <Label htmlFor="is_active">Active</Label>
       </div>
+
       <div className="flex items-center space-x-2">
         <Switch
           id="is_favorite"
@@ -177,9 +184,13 @@ return (
         />
         <Label htmlFor="is_favorite">Favorite</Label>
       </div>
+
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );
 
+}
+
+export default ProductEdit;

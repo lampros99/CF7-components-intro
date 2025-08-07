@@ -14,7 +14,7 @@ export const productSchema = z.object({
       "Slug must use only Latin letters, numbers, - or _",
     ),
   description: z.string().optional(),
-  image: z.string().url("Must be a valid URL").optional(),
+  image: z.string().url("Must be a valid URL").optional(),      
   price: z.coerce.number().nonnegative("Must be a non-negative number"),
   sort: z.coerce.number().int().min(0, "Must be a non-negative integer"),
   is_active: z.boolean(),
@@ -65,7 +65,7 @@ export async function updateProduct(
     slug: string;
     sort: number;
   },
-): Promise<ProductType> {
+): Promise<Product> {
   const res = await fetch(`${API_URL}tenants/${TENANT_ID}/products/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -76,8 +76,8 @@ export async function updateProduct(
 }
 
 export async function createProduct (
-  data: Omit<ProductType, "id">,
-): Promise<ProductType> {
+  data: Omit<Product, "id">,
+): Promise<Product> {
   console.log(data);
   const res = await fetch(`${API_URL}tenants/${TENANT_ID}/products/`,{
     method: "POST",

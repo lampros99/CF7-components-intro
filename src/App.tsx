@@ -25,6 +25,7 @@ import RouterLayout from "./components/RouterLayout.tsx";
 // import MultiFieldFormWithZodValidation from "./components/MultiFieldFormWithZodValidation.tsx";
 // import MultiFieldFormWithReactHook from "./components/MultiFieldFormWithReactHook.tsx";
 import ProductList from "./pages/ProductList.tsx";
+import Product from "./pages/Product.tsx";
 
 // import CounterAdvanded from "./components/CounterAdvanced.tsx";
 // import Counter from "./components/Counter.tsx";
@@ -105,13 +106,13 @@ function App() {
 
        <Route path="products" element={<RouterLayout />}>
               <Route index element={<ProductList />}/>
-              {/* <Route path="new" element={<Product/>}/>
-              <Route path=":productId" element={<Product/>}/> */}
-            </Route>
+              <Route path="new" element={<Product mode="create"/>}/>
+              <Route path=":productId" element={<Product mode="edit"/>}/>
+        </Route>
 
       </Routes>
     </BrowserRouter>
   );
-}
+} 
 
 export default App;
